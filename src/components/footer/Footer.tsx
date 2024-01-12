@@ -1,7 +1,12 @@
 import "./footer.scss";
 
 function Footer() {
-	return <div>Footer</div>;
+	return (
+		<div className="footer">
+			<span>Iamadmin</span>
+			<span>Khanh Nguyen Admin Dashboard</span>
+		</div>
+	);
 }
 
 export default Footer;
