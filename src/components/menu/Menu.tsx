@@ -5,17 +5,18 @@ import { menu } from "../../data";
 function Menu() {
 	return (
 		<div className="menu">
-			<div className="item">
-				<span className="title">main</span>
-				<Link to="/" className="listItem">
-					<img src="../../../public/home.svg" alt="home icon" />
-					<span className="listItemTitle">Home</span>
-				</Link>
-				<Link to="/" className="listItem">
-					<img src="../../../public/profile.svg" alt="profile icon" />
-					<span className="listItemTitle">Profile</span>
-				</Link>
-			</div>
+			{menu.map((item) => (
+				<div className="item" key={item.id}>
+					<span className="title">{item.title}</span>
+
+					{item.listItems.map((listItem) => (
+						<Link to="/" className="listItem" key={listItem.id}>
+							<img src={listItem.icon} alt="icon" />
+							<span className="listItemTitle">{listItem.title}</span>
+						</Link>
+					))}
+				</div>
+			))}
 		</div>
 	);
 }
