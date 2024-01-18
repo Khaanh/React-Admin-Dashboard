@@ -54,7 +54,19 @@ const data = [
 	},
 ];
 
-const Single = () => {
+type Props = {
+	id: number;
+	img?: string;
+	title: string;
+	info: object;
+	chart: {
+		dataKeys: { name: string; colors: string };
+		data: object[];
+	};
+	activities?: { time: string; text: string };
+};
+
+const Single = (props: Props) => {
 	return (
 		<div className="single">
 			<div className="view">
@@ -64,7 +76,7 @@ const Single = () => {
 							src="https://images.unsplash.com/photo-1682687220777-2c60708d6889?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 							alt=""
 						/>
-						<h1></h1>
+						<h1>John Doe</h1>
 						<button>Udpdate</button>
 					</div>
 
