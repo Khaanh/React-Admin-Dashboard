@@ -1,9 +1,4 @@
-import {
-	DataGrid,
-	GridColDef,
-	GridToolbar,
-	GridValueGetterParams,
-} from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
 import "./dataTable.scss";
 import { Link } from "react-router-dom";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -15,7 +10,7 @@ type Props = {
 };
 
 const DataTable = (props: Props) => {
-	const queryClient = useQueryClient();
+	// const queryClient = useQueryClient();
 
 	const mutation = useMutation({
 		mutationFn: (id: number) => {
@@ -23,7 +18,7 @@ const DataTable = (props: Props) => {
 		},
 
 		onSuccess: () => {
-			// queryClient.invalidateQueries([`all${}`])
+			// queryClient.invalidateQueries([`${props.slug}`])
 		},
 	});
 
