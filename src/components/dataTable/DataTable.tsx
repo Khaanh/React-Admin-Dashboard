@@ -6,6 +6,7 @@ import {
 } from "@mui/x-data-grid";
 import "./dataTable.scss";
 import { Link } from "react-router-dom";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 type Props = {
 	columns: GridColDef[];
@@ -14,7 +15,20 @@ type Props = {
 };
 
 const DataTable = (props: Props) => {
+	const queryClient = useQueryClient();
+
+	const mutation = useMutation({
+		mutationFn: (id: number) => {
+			return fetch("./localServer");
+		},
+
+		onSuccess: () => {
+			// queryClient.invalidateQueries([`all${}`])
+		},
+	});
+
 	const handleDelete = (id: number) => {
+		mutation.mutate(id);
 		// delete the item
 	};
 

@@ -60,10 +60,10 @@ type Props = {
 	title: string;
 	info: object;
 	chart: {
-		dataKeys: { name: string; colors: string };
+		dataKeys: { name: string; color: string }[];
 		data: object[];
 	};
-	activities?: { time: string; text: string };
+	activities?: { time: string; text: string }[];
 };
 
 const Single = (props: Props) => {
@@ -76,94 +76,65 @@ const Single = (props: Props) => {
 							src="https://images.unsplash.com/photo-1682687220777-2c60708d6889?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 							alt=""
 						/>
-						<h1>John Doe</h1>
+						{props.img && <img src={props.img} alt="" />}
+						<h1>{props.title}</h1>
 						<button>Udpdate</button>
 					</div>
 
 					<div className="details">
-						<div className="item">
-							<span className="itemTitle">Username:</span>
-							<span className="itemValue">John Doe</span>
-						</div>
-						<div className="item">
-							<span className="itemTitle">Username:</span>
-							<span className="itemValue">John Doe</span>
-						</div>
-						<div className="item">
-							<span className="itemTitle">Username:</span>
-							<span className="itemValue">John Doe</span>
-						</div>
+						{Object.entries(props.info).map((item) => (
+							<div className="item" key={item[0]}>
+								<span className="itemTitle">{item[0]}</span>
+								<span className="itemValue">{item[1]}</span>
+							</div>
+						))}
 					</div>
 				</div>
 				<hr />
 				<div className="chart">
-					<ResponsiveContainer width="100%" height="100%">
-						<LineChart
-							width={500}
-							height={300}
-							data={data}
-							margin={{
-								top: 5,
-								right: 30,
-								left: 20,
-								bottom: 5,
-							}}
-						>
-							<XAxis dataKey="name" />
-							<YAxis />
-							{/* <Tooltip /> */}
-							<Legend />
-							<Line
-								type="monotone"
-								dataKey="pv"
-								stroke="#8884d8"
-								activeDot={{ r: 8 }}
-							/>
-							<Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-						</LineChart>
-					</ResponsiveContainer>
+					{props.chart && (
+						<ResponsiveContainer width="100%" height="100%">
+							<LineChart
+								width={500}
+								height={300}
+								data={props.chart.data}
+								margin={{
+									top: 5,
+									right: 30,
+									left: 20,
+									bottom: 5,
+								}}
+							>
+								<XAxis dataKey="name" />
+								<YAxis />
+								{/* <Tooltip /> */}
+								<Legend />
+								{props.chart.dataKeys.map((dataKey) => (
+									<Line
+										type="monotone"
+										dataKey={dataKey.name}
+										stroke={dataKey.color}
+									/>
+								))}
+							</LineChart>
+						</ResponsiveContainer>
+					)}
 				</div>
 			</div>
 			<div className="activities">
 				<h2>Activities</h2>
-				<ul>
-					<li>
-						<div>
-							<p>Lorem, ipsum dolor.</p>
-							<time>3 days ago</time>
-						</div>
-					</li>
-					<li>
-						<div>
-							<p>Lorem, ipsum dolor.</p>
-							<time>3 days ago</time>
-						</div>
-					</li>
-					<li>
-						<div>
-							<p>Lorem, ipsum dolor.</p>
-							<time>3 days ago</time>
-						</div>
-					</li>
-					<li>
-						<div>
-							<p>Lorem, ipsum dolor.</p>
-							<time>3 days ago</time>
-						</div>
-					</li>
-					<li>
-						<div>
-							<p>Lorem, ipsum dolor.</p>
-							<time>3 days ago</time>
-						</div>
-					</li>
-					<li>
-						<div>
-							<p>Lorem, ipsum dolor.</p>
-							<time>3 days ago</time>
-						</div>
-					</li>
-				</ul>
+				{props.activities && (
+					<ul>
+						{props.activities.map((activity) => (
+							<li key={activity.text}>
+								<div>
+									<p>{activity.text}</p>
+									<time>{activity.time}</time>
+								</div>
+							</li>
+						))}
+					</ul>
+				)}
 			</div>
 		</div>
 	);
