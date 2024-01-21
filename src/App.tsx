@@ -35,11 +35,11 @@ function App() {
 
 	const router = createBrowserRouter([
 		{
-			path: "./",
+			path: "/",
 			element: <Layout />,
 			children: [
 				{
-					path: "./",
+					path: "/",
 					element: <Home />,
 				},
 				{
