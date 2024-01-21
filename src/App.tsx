@@ -35,11 +35,11 @@ function App() {
 
 	const router = createBrowserRouter([
 		{
-			path: "/",
+			path: "https://khaanh.github.io/React-Admin-Dashboard",
 			element: <Layout />,
 			children: [
 				{
-					path: "/",
+					path: "https://khaanh.github.io/React-Admin-Dashboard",
 					element: <Home />,
 				},
 				{
