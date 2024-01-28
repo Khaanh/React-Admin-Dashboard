@@ -8,11 +8,11 @@ function Navbar() {
 				<span>Iamadmin</span>
 			</div>
 			<div className="icons">
-				<img src="./public/search.svg" alt="icon" className="icon" />
-				<img src="./public/app.svg" alt="icon" className="icon" />
-				<img src="./public/expand.svg" alt="icon" className="icon" />
+				<img src="/search.svg" alt="icon" className="icon" />
+				<img src="/app.svg" alt="icon" className="icon" />
+				<img src="/expand.svg" alt="icon" className="icon" />
 				<div className="notification">
-					<img src="./public/notifications.svg" alt="icon" />
+					<img src="/notifications.svg" alt="icon" />
 					<span>1</span>
 				</div>
 				<div className="user">
@@ -22,7 +22,7 @@ function Navbar() {
 					/>
 					<span>Jane</span>
 				</div>
-				<img src="./public/settings.svg" alt="icon" className="icon" />
+				<img src="/settings.svg" alt="icon" className="icon" />
 			</div>
 		</div>
 	);
